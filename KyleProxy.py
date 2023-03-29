@@ -12,6 +12,7 @@ from random import choice
 from string import ascii_lowercase
 from numpy import zeros
 from threading import Thread
+from traceback import format_exc
 
 from discord import Intents
 from discord.ext import commands
@@ -799,4 +800,6 @@ if __name__ == '__main__':
             else:
                 client.run(client.token)
     except Exception as e:
-        print(e)
+        system("mode 142,40")
+        print(format_exc())
+        input()
