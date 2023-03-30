@@ -9,10 +9,10 @@ from typing import NoReturn, List, Dict, Literal, Tuple
 from json import dump, load
 from itertools import cycle
 from random import choice
+from traceback import format_exc
 from string import ascii_lowercase
 from numpy import zeros
 from threading import Thread
-from traceback import format_exc
 
 from discord import Intents
 from discord.ext import commands
@@ -233,10 +233,10 @@ class Nuker(commands.Bot):
 
     async def LoadData(self) -> None:
         """Loads the Data"""
-        self.emojiis: List[str] = [line.strip() for line in open("data/emojis.txt")]
-        self.members: List[str] = [line.strip() for line in open("data/members.txt")]
-        self.channels: List[str] = [line.strip() for line in open("data/channels.txt")]
-        self.roles: List[str] = [line.strip() for line in open("data/roles.txt")]
+        self.emojiis: List[str] = open("data/emojis.txt").read().split('\n')
+        self.members: List[str] = open("data/members.txt").read().split('\n')
+        self.channels: List[str] = open("data/channels.txt").read().split('\n')
+        self.roles: List[str] = open("data/roles.txt").read().split('\n')
         Pp(t="Successfully loaded data!")
         Pp(t="Press any key to continue")
         getch()
